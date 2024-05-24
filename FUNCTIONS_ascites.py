@@ -306,6 +306,8 @@ artifactual_var = [["chr3:189456566", "TP63", "p.?", "Variant called on the very
 
 df_artifactual_var = pd.DataFrame(artifactual_var, columns =["Locus", "Gene", "Amino_Acid_Change", "Verdict"])
 
+############################################################################### 
+# #%% Filter out artifacts
 def remove_artifactual_variants(df):
     global df_artifactual_var
     
@@ -379,6 +381,7 @@ def prep_nlp(df, diff_samples):
 
     return df_nlp
 
+############################################################################### 
 #%% SAVING MUTATION FILES SEPERATELY
 def saving_mut_files(df, suffix):
 
@@ -389,7 +392,8 @@ def saving_mut_files(df, suffix):
         text_file = open(file_name, "w")
         text_file.write(j)
         text_file.close()
-    
+
+############################################################################### 
 # %% COSINE SIMILARITY
 
 def Cosine_similarity(corpus):
@@ -423,6 +427,7 @@ def Cosine_similarity(corpus):
     
     return co_sim1_df, df_doc1
 
+############################################################################### 
 #%% PLOTTING NETWORKS
 
 def plot_network(sources, targets, weights):
@@ -459,9 +464,7 @@ def plot_network(sources, targets, weights):
     
     return plt
 
-# ff532f, fc766aff
-# 489cb7, 5b84b1ff
-
+############################################################################### 
 # %% PLOTTING CLUSTERMAP
 
 def plotting_clustermap(df):
@@ -486,7 +489,7 @@ def plotting_clustermap(df):
     
     # plt.setp(g.ax_cbar.tick_params(labelsize=30))
     
-    
+###############################################################################     
 # %% SOURCE TARGETS WEIGHTS FOR NETWORK
 
 def source_targets_weights(df):
@@ -507,7 +510,7 @@ def source_targets_weights(df):
 
     return sources, targets, weights
 
-
+############################################################################### 
 #%% PLOTTING SCATTER HEATMAP
 def scatter_heatplot(data, x, y, hue, title):
     g = sns.relplot(
